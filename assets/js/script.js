@@ -1,11 +1,39 @@
 // TODO: Declare any global variables we need
-
-
+let Heads = 0
+let Tails = 0
+let percentHeads = 0
+    let percentTails = 0
 document.addEventListener('DOMContentLoaded', function () {
     // This is just a sanity check to make sure your JavaScript script is getting loaded
     // You can remove it once you see it in your browser console in the developer tools
     console.log('Hi')
 
+    document.getElementById("Flip").addEventListener("click",function(){
+    let flippedHeads = Math.random()<0.5
+    console.log(flippedHeads)
+    if(flippedHeads){
+    document.getElementById('penny').src = 'assets/images/penny-heads.jpg'
+    document.getElementById("message").textContent = "You Flipped Heads"
+    heads ++
+}
+else{
+    document.getElementById("penny").src='/assets/image/penny-tails.jpg'
+    document.getElementById("message").textContent = "You flipped Tails"
+    tails++
+}
+total()
+    })
+    
+    document.getElementById("clear").addEventListener("click",function(){
+console.log("clear")
+        heads = 0
+tails = 0
+percentHeads = 0
+percentTails = 0
+let total = heads + tails
+
+display()
+    })
     // TODO: Add event listener and handler for flip and clear buttons
 
     // Flip Button Click Handler
@@ -25,3 +53,20 @@ document.addEventListener('DOMContentLoaded', function () {
         // TODO: Update the scoreboard (same logic as in flip button click handler)
 
 })
+function total (){
+    let total = heads + tails
+    console.log(total)
+    
+    if(total >0){
+        percentHeads = math.round((heads/total) * 100)
+        percentTails = math.round((tails/total) * 100)
+
+    }
+   display()
+}
+function display(){
+    document.getElementById("heads").textContent = heads
+    document.getElementById("heads-percent").textContent = perventHeads + '%'
+    document.getElementById("tails").textContent = tails
+    document.getElementById("tails-percent").textContent = percentTails +'%'
+}
